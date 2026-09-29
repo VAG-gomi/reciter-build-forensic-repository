@@ -1,0 +1,50 @@
+{
+  "reports": [
+    {
+      "component": "Laya",
+      "direct_execution_evidence": "NO",
+      "provenance": "UNKNOWN",
+      "runtime_evidence": "NOT_TESTED_AS_COMPONENT",
+      "sandbox_evidence": "NOT_FOUND_IN_PROJECT_SCAN",
+      "source_level_evidence": [],
+      "status": "UNRESOLVED"
+    },
+    {
+      "component": "MAF",
+      "direct_execution_evidence": "NO",
+      "provenance": "UNKNOWN",
+      "runtime_evidence": "NOT_TESTED_AS_COMPONENT",
+      "sandbox_evidence": "NOT_FOUND_IN_PROJECT_SCAN",
+      "source_level_evidence": [],
+      "status": "UNRESOLVED"
+    },
+    {
+      "component": "LHE",
+      "direct_execution_evidence": "NO",
+      "provenance": "UNKNOWN",
+      "runtime_evidence": "NOT_TESTED_AS_COMPONENT",
+      "sandbox_evidence": "NOT_FOUND_IN_PROJECT_SCAN",
+      "source_level_evidence": [],
+      "status": "UNRESOLVED"
+    },
+    {
+      "component": "CFHM",
+      "direct_execution_evidence": "NO",
+      "provenance": "UNKNOWN",
+      "runtime_evidence": "NOT_TESTED_AS_COMPONENT",
+      "sandbox_evidence": "NOT_FOUND_IN_PROJECT_SCAN",
+      "source_level_evidence": [],
+      "status": "UNRESOLVED"
+    },
+    {
+      "component": "Frozen repository sections",
+      "direct_execution_evidence": "NO",
+      "provenance": "PARTIALLY_SUPPORTED_AS_EXTERNAL_REFERENCE_ONLY",
+      "runtime_evidence": "Not tested as Reciter dependencies",
+      "sandbox_evidence": "Frozen checkouts exist under /tmp/frozen-projects",
+      "source_level_evidence": "No exact whole-file match found by conservative scanner",
+      "status": "PARTIALLY_ESTABLISHED"
+    }
+  ],
+  "rule": "Named references and source similarity do not establish direct execution or copying."
+}

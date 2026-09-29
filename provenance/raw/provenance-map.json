@@ -1,0 +1,59 @@
+{
+  "edges": [
+    {
+      "basis": "byte-identical preserved source/archive comparison",
+      "from": "baseline",
+      "status": "SUPPORTED",
+      "to": "sandbox-copy"
+    },
+    {
+      "basis": "no exact whole-file match established",
+      "from": "frozen-repositories",
+      "status": "UNKNOWN",
+      "to": "sandbox-copy"
+    },
+    {
+      "basis": "no surviving direct import/API evidence in inspected project",
+      "from": "external-components",
+      "status": "UNKNOWN",
+      "to": "sandbox-copy"
+    },
+    {
+      "basis": "Node VM runtime trace",
+      "from": "sandbox-copy",
+      "status": "EXECUTED",
+      "to": "runtime"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "baseline",
+      "path": "/home/ubuntu/reciter-build-forensic/archive/reciter-baseline",
+      "status": "OBSERVED"
+    },
+    {
+      "id": "sandbox-copy",
+      "path": "/home/ubuntu/reciter-build-forensic/source/index.html",
+      "status": "OBSERVED"
+    },
+    {
+      "id": "frozen-repositories",
+      "path": "/tmp/frozen-projects",
+      "status": "OBSERVED"
+    },
+    {
+      "id": "external-components",
+      "names": [
+        "Laya",
+        "MAF",
+        "LHE",
+        "CFHM"
+      ],
+      "status": "UNKNOWN"
+    },
+    {
+      "id": "runtime",
+      "status": "EXECUTED"
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "components": [
+    {
+      "component": "Laya",
+      "direct_execution_evidence": "NO_SURVIVING_MATCH_IN_PROJECT",
+      "matches": [],
+      "status": "UNRESOLVED"
+    },
+    {
+      "component": "MAF",
+      "direct_execution_evidence": "NO_SURVIVING_MATCH_IN_PROJECT",
+      "matches": [],
+      "status": "UNRESOLVED"
+    },
+    {
+      "component": "LHE",
+      "direct_execution_evidence": "NO_SURVIVING_MATCH_IN_PROJECT",
+      "matches": [],
+      "status": "UNRESOLVED"
+    },
+    {
+      "component": "CFHM",
+      "direct_execution_evidence": "NO_SURVIVING_MATCH_IN_PROJECT",
+      "matches": [],
+      "status": "UNRESOLVED"
+    }
+  ],
+  "note": "A name match is not execution evidence.",
+  "scan_root": "/home/ubuntu/universal-language-reciter"
+}

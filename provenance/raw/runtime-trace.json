@@ -1,0 +1,86 @@
+{
+  "method": "Node VM harness",
+  "result": {
+    "inputs": [
+      {
+        "final": {
+          "confidence": 35,
+          "languageCode": "en-US",
+          "languageName": "English",
+          "method": "fallback"
+        },
+        "input": "hola",
+        "ngram": {
+          "confidence": 40,
+          "languageCode": "en-US",
+          "languageName": "English"
+        },
+        "unicode": {
+          "confidence": 100,
+          "languageCode": null,
+          "script": "latin"
+        }
+      },
+      {
+        "final": {
+          "confidence": 35,
+          "languageCode": "en-US",
+          "languageName": "English",
+          "method": "fallback"
+        },
+        "input": "Esta es una oración mucho más larga que contiene varios patrones del español.",
+        "ngram": {
+          "confidence": 47,
+          "languageCode": "es-ES",
+          "languageName": "Spanish"
+        },
+        "unicode": {
+          "confidence": 98,
+          "languageCode": null,
+          "script": "latin"
+        }
+      },
+      {
+        "final": {
+          "confidence": 35,
+          "languageCode": "en-US",
+          "languageName": "English",
+          "method": "fallback"
+        },
+        "input": "Hello my friend.\\nمرحبا يا صديقي.\\nBonjour mon ami.",
+        "ngram": {
+          "confidence": 22,
+          "languageCode": "en-US",
+          "languageName": "English"
+        },
+        "unicode": {
+          "confidence": 67,
+          "languageCode": null,
+          "script": "latin"
+        }
+      },
+      {
+        "final": {
+          "confidence": 0,
+          "languageCode": "en-US",
+          "languageName": "English",
+          "method": "none"
+        },
+        "input": "",
+        "ngram": {
+          "confidence": 40,
+          "languageCode": "en-US",
+          "languageName": "English"
+        },
+        "unicode": {
+          "confidence": 0,
+          "languageCode": null,
+          "script": null
+        }
+      }
+    ],
+    "node": "v22.13.0"
+  },
+  "source": "/home/ubuntu/reciter-build-forensic/source/index.html",
+  "status": "EXECUTED"
+}

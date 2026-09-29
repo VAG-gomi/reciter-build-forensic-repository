@@ -1,0 +1,37 @@
+{
+  "components": [
+    {
+      "component": "Laya",
+      "direct_execution_evidence": "NOT_ESTABLISHED",
+      "matches": [
+        {
+          "context": "{name:'arabic',min:0x0600,max:0x06FF,code:'ar-SA',label:'Arabic'},{name:'hebrew',min:0x0590,max:0x05FF,code:'he-IL',label:'Hebrew/Aramaic'},{name:'bengali',min:0x0980,max:0x09FF,code:'bn-BD',label:'Bengali'},{name:'devanagari',min:0x0900,max:0x097F,code:'hi-IN',label:'Hindi'},{name:'thai',min:0x0E00,max:0x0E7F,code:'th-TH',label:'Thai'},{name:'korean',min:0xAC00,max:0xD7AF,code:'ko-KR',label:'Korean'},{name:'korean2',min:0x1100,max:0x11FF,code:'ko-KR',label:'Korean'},{name:'cjk',min:0x4E00,max:0",
+          "file": "/home/ubuntu/universal-language-reciter/index.html",
+          "line": 67,
+          "reference_type": "string-or-code-reference"
+        }
+      ],
+      "status": "PARTIALLY_ESTABLISHED"
+    },
+    {
+      "component": "MAF",
+      "direct_execution_evidence": "NO_SURVIVING_MATCH_IN_PROJECT",
+      "matches": [],
+      "status": "UNRESOLVED"
+    },
+    {
+      "component": "LHE",
+      "direct_execution_evidence": "NO_SURVIVING_MATCH_IN_PROJECT",
+      "matches": [],
+      "status": "UNRESOLVED"
+    },
+    {
+      "component": "CFHM",
+      "direct_execution_evidence": "NO_SURVIVING_MATCH_IN_PROJECT",
+      "matches": [],
+      "status": "UNRESOLVED"
+    }
+  ],
+  "note": "A name match is not execution evidence.",
+  "scan_root": "/home/ubuntu/universal-language-reciter"
+}

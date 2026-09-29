@@ -1,0 +1,48 @@
+{
+  "baseline": {
+    "path": "/home/ubuntu/reciter-build-forensic/archive/reciter-baseline/index.html",
+    "sha256": "795c4406efd0931847af4b6620c9576c54184389bf01e8419b897098fbc42e27"
+  },
+  "classifications": [
+    {
+      "candidate": "/home/ubuntu/reciter-build-forensic/archive/reciter-baseline/index.html",
+      "classification": "UNCHANGED"
+    }
+  ],
+  "current": {
+    "path": "/home/ubuntu/reciter-build-forensic/source/index.html",
+    "sha256": "795c4406efd0931847af4b6620c9576c54184389bf01e8419b897098fbc42e27"
+  },
+  "implementation_regions": [
+    {
+      "found": true,
+      "function": "detectUnicode",
+      "source_line": 62
+    },
+    {
+      "found": true,
+      "function": "extractBigrams",
+      "source_line": 76
+    },
+    {
+      "found": true,
+      "function": "cosineSimilarity",
+      "source_line": 77
+    },
+    {
+      "found": true,
+      "function": "detectNgram",
+      "source_line": 78
+    },
+    {
+      "found": true,
+      "function": "detectLanguage",
+      "source_line": 79
+    },
+    {
+      "found": true,
+      "function": "speakText",
+      "source_line": 81
+    }
+  ]
+}

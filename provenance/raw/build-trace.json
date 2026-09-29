@@ -1,0 +1,13 @@
+{
+  "build_command": "UNKNOWN",
+  "errors": [],
+  "files_read": [
+    "/home/ubuntu/universal-language-reciter/index.html"
+  ],
+  "generated_files": [],
+  "project": "/home/ubuntu/universal-language-reciter",
+  "status": "NOT_APPLICABLE_OR_UNSPECIFIED",
+  "warnings": [
+    "No package manifest or build script was found in the inspected project."
+  ]
+}

@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Universal Language Reciter</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root { --bg:#0D1117; --surface:#13181F; --card:#1B2130; --border:#2A3344; --gold:#C9A84C; --text:#E8DCC8; --text-secondary:#8B96A8; --green:#4CAF73; --red:#C94C4C; }
+    * { box-sizing:border-box; margin:0; padding:0; }
+    body { background:var(--bg); color:var(--text); font-family:'DM Sans',sans-serif; min-height:100vh; padding-bottom:env(safe-area-inset-bottom,16px); }
+    .app { max-width:480px; margin:0 auto; padding:0 16px 32px; }
+    header { padding:24px 0 16px; text-align:center; }
+    header h1 { font-size:1.2rem; font-weight:600; color:var(--gold); }
+    .subtitle { font-size:.78rem; color:var(--text-secondary); margin-top:4px; }
+    textarea { width:100%; background:var(--card); border:1px solid var(--border); border-radius:10px; color:var(--text); font-family:inherit; font-size:1rem; line-height:1.7; padding:14px; resize:vertical; outline:none; }
+    textarea:focus { border-color:var(--gold); }
+    .detection-bar { background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:10px 14px; display:flex; align-items:center; gap:8px; margin:10px 0 12px; flex-wrap:wrap; min-height:42px; }
+    .dot { width:10px; height:10px; border-radius:50%; background:var(--border); flex-shrink:0; }
+    .dot.high { background:var(--green); } .dot.medium { background:var(--gold); } .dot.low { background:var(--red); }
+    #lang-name { font-size:.88rem; font-weight:500; } .lang-code { font-size:.75rem; color:var(--text-secondary); font-family:monospace; }
+    .confidence-pct { font-size:.75rem; color:var(--gold); margin-left:auto; }
+    .method-tag { font-size:.65rem; color:var(--text-secondary); background:var(--card); border:1px solid var(--border); border-radius:10px; padding:2px 7px; }
+    .speed-row { display:flex; align-items:center; gap:10px; margin-bottom:14px; }
+    .speed-row label { font-size:.78rem; color:var(--text-secondary); flex-shrink:0; }
+    #speed-slider { flex:1; accent-color:var(--gold); } #speed-label { font-size:.78rem; color:var(--gold); min-width:30px; text-align:right; }
+    .speak-row { margin-bottom:14px; }
+    #speak-btn { width:100%; background:var(--gold); border:none; border-radius:10px; color:#0D1117; font-family:inherit; font-size:1rem; font-weight:700; padding:14px; cursor:pointer; letter-spacing:.05em; }
+    #speak-btn:disabled { opacity:.35; cursor:not-allowed; } #speak-btn[data-speaking="true"] { background:var(--red); color:white; }
+    .voice-row { display:flex; align-items:center; gap:10px; } .voice-row label { font-size:.78rem; color:var(--text-secondary); flex-shrink:0; }
+    #voice-select { flex:1; background:var(--card); border:1px solid var(--border); border-radius:6px; color:var(--text); font-family:inherit; font-size:.78rem; padding:7px 8px; outline:none; }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <header><h1>Universal Language Reciter</h1><p class="subtitle">Type in any language — it speaks back</p></header>
+    <div class="input-section"><textarea id="text-input" placeholder="Type or paste any text in any language..." rows="6" spellcheck="false" autocomplete="off"></textarea></div>
+    <div class="detection-bar" id="detection-bar"><span class="dot" id="confidence-dot"></span><span id="lang-name">Waiting for input...</span><span class="lang-code" id="lang-code"></span><span class="confidence-pct" id="confidence-pct"></span><span class="method-tag" id="method-tag"></span></div>
+    <div class="controls"><div class="speed-row"><label for="speed-slider">Speed</label><input type="range" id="speed-slider" min="0.5" max="1.5" step="0.1" value="0.9"><span id="speed-label">0.9×</span></div></div>
+    <div class="speak-row"><button id="speak-btn" disabled data-speaking="false">🔊 SPEAK</button></div>
+    <div class="voice-row"><label for="voice-select">Voice</label><select id="voice-select"><option>Loading voices...</option></select></div>
+  </div>
+<script>
+'use strict';
+const LANGUAGE_PROFILES = {
+  'en-US': { name:'English', bigrams:{'th':.0388,'he':.0331,'in':.0228,'er':.0218,'an':.0200,'re':.0185,'on':.0176,'en':.0169,'at':.0149,'nd':.0135,'ti':.0134,'es':.0128,'or':.0128,'te':.0120,'of':.0117,'ed':.0115,'is':.0113,'it':.0112,'al':.0109,'ar':.0107} },
+  'es-ES': { name:'Spanish', bigrams:{'de':.0350,'en':.0290,'la':.0280,'el':.0270,'os':.0250,'es':.0240,'ar':.0220,'al':.0210,'as':.0200,'co':.0190,'ta':.0180,'ue':.0170,'re':.0160,'ra':.0150,'se':.0140,'qu':.0130,'no':.0120,'lo':.0110,'on':.0100,'io':.0090} },
+  'fr-FR': { name:'French', bigrams:{'le':.0320,'de':.0310,'es':.0280,'en':.0270,'re':.0240,'nt':.0230,'qu':.0210,'on':.0200,'ou':.0190,'la':.0180,'er':.0170,'ai':.0160,'te':.0150,'ti':.0140,'an':.0130,'se':.0120,'it':.0110,'is':.0100,'pa':.0090,'ur':.0080} },
+  'de-DE': { name:'German', bigrams:{'en':.0380,'er':.0350,'ch':.0280,'ei':.0210,'ie':.0200,'st':.0190,'ge':.0180,'de':.0170,'nd':.0160,'te':.0150,'be':.0140,'re':.0130,'in':.0120,'un':.0110,'ng':.0100,'sc':.0095,'an':.0090,'nt':.0085,'es':.0080,'he':.0075} },
+  'pt-BR': { name:'Portuguese', bigrams:{'de':.0330,'os':.0290,'ar':.0270,'as':.0260,'da':.0240,'em':.0230,'ao':.0190,'es':.0180,'ra':.0170,'na':.0160,'re':.0150,'um':.0140,'se':.0130,'do':.0120,'ma':.0110,'co':.0105,'en':.0100,'is':.0095,'ta':.0090,'or':.0085} },
+  'it-IT': { name:'Italian', bigrams:{'di':.0310,'la':.0300,'le':.0290,'ch':.0280,'ti':.0250,'re':.0230,'co':.0200,'er':.0190,'ta':.0180,'li':.0170,'in':.0160,'si':.0150,'ne':.0140,'il':.0130,'un':.0120,'al':.0115,'on':.0110,'no':.0105,'de':.0100,'el':.0095} },
+  'nl-NL': { name:'Dutch', bigrams:{'de':.0350,'en':.0320,'ij':.0280,'ee':.0250,'oo':.0230,'aa':.0210,'an':.0170,'er':.0160,'te':.0150,'in':.0140,'ge':.0130,'on':.0120,'ie':.0110,'ve':.0100,'he':.0090,'nd':.0080,'at':.0075,'st':.0070,'be':.0065} },
+  'tr-TR': { name:'Turkish', bigrams:{'in':.0320,'ar':.0290,'er':.0270,'an':.0250,'da':.0190,'de':.0180,'ya':.0170,'ki':.0160,'en':.0150,'ik':.0140,'ak':.0130,'ma':.0120,'la':.0110,'ir':.0100,'ka':.0090,'le':.0085,'il':.0080,'bi':.0075,'si':.0070,'un':.0065} },
+  'id-ID': { name:'Indonesian', bigrams:{'an':.0410,'ng':.0380,'di':.0290,'ya':.0270,'ka':.0250,'me':.0230,'pe':.0210,'be':.0190,'ke':.0180,'se':.0170,'la':.0160,'ra':.0150,'at':.0140,'ak':.0130,'ti':.0120,'pa':.0115,'sa':.0110,'ri':.0105,'na':.0100,'ta':.0095} },
+  'sw-KE': { name:'Swahili', bigrams:{'na':.0420,'wa':.0380,'ya':.0350,'ka':.0310,'ni':.0290,'ku':.0270,'la':.0250,'ha':.0230,'ki':.0210,'ma':.0190,'sa':.0170,'ta':.0160,'ri':.0150,'si':.0140,'li':.0130,'pa':.0120,'tu':.0110,'ga':.0100,'ba':.0090,'za':.0080} }
+};
+let currentVoices=[]; let speakRate=.9; let activeSpeakBtn=null;
+function loadVoices(){ if(!window.speechSynthesis) return; const voices=window.speechSynthesis.getVoices(); if(voices.length) { currentVoices=voices; const text=document.getElementById('text-input').value; populateVoiceSelector(text ? detectLanguage(text).languageCode : 'en-US'); } }
+if(window.speechSynthesis){ window.speechSynthesis.onvoiceschanged=loadVoices; [0,300,800,1500,3000].forEach(d=>setTimeout(loadVoices,d)); }
+function detectUnicode(text){
+  if(!text||text.trim().length===0) return {languageCode:null,script:null,confidence:0};
+  const chars=Array.from(text).filter(ch=>{const cp=ch.codePointAt(0); return cp>0x0020&&!(cp>=0x0030&&cp<=0x0039);});
+  if(chars.length===0) return {languageCode:null,script:null,confidence:0};
+  const counts={}; const scriptMap=[
+    {name:'arabic',min:0x0600,max:0x06FF,code:'ar-SA',label:'Arabic'},{name:'hebrew',min:0x0590,max:0x05FF,code:'he-IL',label:'Hebrew/Aramaic'},{name:'bengali',min:0x0980,max:0x09FF,code:'bn-BD',label:'Bengali'},{name:'devanagari',min:0x0900,max:0x097F,code:'hi-IN',label:'Hindi'},{name:'thai',min:0x0E00,max:0x0E7F,code:'th-TH',label:'Thai'},{name:'korean',min:0xAC00,max:0xD7AF,code:'ko-KR',label:'Korean'},{name:'korean2',min:0x1100,max:0x11FF,code:'ko-KR',label:'Korean'},{name:'cjk',min:0x4E00,max:0x9FFF,code:'zh-CN',label:'Chinese'},{name:'cyrillic',min:0x0400,max:0x04FF,code:'ru-RU',label:'Russian'},{name:'greek',min:0x0370,max:0x03FF,code:'el-GR',label:'Greek'},{name:'georgian',min:0x10A0,max:0x10FF,code:'ka-GE',label:'Georgian'},{name:'armenian',min:0x0530,max:0x058F,code:'hy-AM',label:'Armenian'},{name:'ethiopic',min:0x1200,max:0x137F,code:'am-ET',label:'Amharic'},{name:'gujarati',min:0x0A80,max:0x0AFF,code:'gu-IN',label:'Gujarati'},{name:'tamil',min:0x0B80,max:0x0BFF,code:'ta-IN',label:'Tamil'},{name:'telugu',min:0x0C00,max:0x0C7F,code:'te-IN',label:'Telugu'},{name:'kannada',min:0x0C80,max:0x0CFF,code:'kn-IN',label:'Kannada'},{name:'malayalam',min:0x0D00,max:0x0D7F,code:'ml-IN',label:'Malayalam'},{name:'sinhala',min:0x0D80,max:0x0DFF,code:'si-LK',label:'Sinhala'},{name:'burmese',min:0x1000,max:0x109F,code:'my-MM',label:'Burmese'},{name:'khmer',min:0x1780,max:0x17FF,code:'km-KH',label:'Khmer'},{name:'latin',min:0x0041,max:0x024F,code:null,label:'Latin'}];
+  scriptMap.forEach(s=>counts[s.name]=0); counts.other=0;
+  for(const ch of chars){const cp=ch.codePointAt(0); let matched=false; for(const script of scriptMap){if(cp>=script.min&&cp<=script.max){counts[script.name]++;matched=true;break;}} if(!matched) counts.other++;}
+  const total=chars.length; let topScript=null; let topCount=0; for(const script of scriptMap){if((counts[script.name]||0)>topCount){topCount=counts[script.name];topScript=script;}}
+  if(!topScript||topCount===0) return {languageCode:null,script:'unknown',confidence:0};
+  const confidence=Math.round(topCount/total*100);
+  if(topScript.name==='latin') return {languageCode:null,script:'latin',confidence};
+  return {languageCode:topScript.code,languageName:topScript.label,script:topScript.name,confidence};
+}
+function extractBigrams(text){const cleaned=text.toLowerCase().replace(/[^a-z]/g,''); if(cleaned.length<2)return{}; const bigrams={}; for(let i=0;i<cleaned.length-1;i++){const bg=cleaned[i]+cleaned[i+1];bigrams[bg]=(bigrams[bg]||0)+1;} const total=cleaned.length-1; for(const key in bigrams)bigrams[key]/=total; return bigrams;}
+function cosineSimilarity(textBigrams,profileBigrams){let dotProduct=0,textMagnitude=0,profileMagnitude=0; for(const key in textBigrams){textMagnitude+=textBigrams[key]*textBigrams[key];if(profileBigrams[key])dotProduct+=textBigrams[key]*profileBigrams[key];} for(const key in profileBigrams)profileMagnitude+=profileBigrams[key]*profileBigrams[key]; const magnitude=Math.sqrt(textMagnitude)*Math.sqrt(profileMagnitude); return magnitude===0?0:dotProduct/magnitude;}
+function detectNgram(text){if(!text||text.trim().length<8)return{languageCode:'en-US',languageName:'English',confidence:40}; const textBigrams=extractBigrams(text); let bestScore=0,bestCode='en-US',bestName='English'; for(const [code,profile] of Object.entries(LANGUAGE_PROFILES)){const score=cosineSimilarity(textBigrams,profile.bigrams);if(score>bestScore){bestScore=score;bestCode=code;bestName=profile.name;}} return{languageCode:bestCode,languageName:bestName,confidence:Math.round(bestScore*100)};}
+function detectLanguage(text){if(!text||text.trim().length===0)return{languageCode:'en-US',languageName:'English',confidence:0,method:'none'}; const l1=detectUnicode(text); if(l1.languageCode&&l1.confidence>=95)return{...l1,method:'unicode-rule'}; const l2=detectNgram(text); if(l2.confidence>=60)return{...l2,method:'neural-ngram'}; return{languageCode:'en-US',languageName:'English',confidence:35,method:'fallback'};}
+function populateVoiceSelector(languageCode){const sel=document.getElementById('voice-select'); sel.innerHTML=''; const prefix=languageCode.slice(0,2); const matching=currentVoices.filter(v=>v.lang.startsWith(prefix)); const others=currentVoices.filter(v=>!v.lang.startsWith(prefix)); if(matching.length){const g=document.createElement('optgroup');g.label='Best voices for this language';matching.forEach((v,i)=>{const o=document.createElement('option');o.value=currentVoices.indexOf(v);o.textContent=v.name+' ['+v.lang+']';if(i===0)o.selected=true;g.appendChild(o);});sel.appendChild(g);} if(others.length){const g=document.createElement('optgroup');g.label='Other voices';others.forEach(v=>{const o=document.createElement('option');o.value=currentVoices.indexOf(v);o.textContent=v.name+' ['+v.lang+']';g.appendChild(o);});sel.appendChild(g);} if(!sel.options.length)sel.innerHTML='<option value="-1">Device default</option>';}
+function speakText(text,languageCode){if(!window.speechSynthesis||!text||!text.trim())return; speechSynthesis.cancel(); const utt=new SpeechSynthesisUtterance(text); utt.rate=speakRate;utt.lang=languageCode; const sel=document.getElementById('voice-select');const idx=parseInt(sel?sel.value:'-1',10);if(idx>=0&&currentVoices[idx]){utt.voice=currentVoices[idx];utt.lang=currentVoices[idx].lang;} const speakBtn=document.getElementById('speak-btn');activeSpeakBtn=speakBtn;if(speakBtn){speakBtn.textContent='STOP';speakBtn.dataset.speaking='true';} utt.onend=()=>{if(speakBtn){speakBtn.textContent='🔊 SPEAK';speakBtn.dataset.speaking='false';}};utt.onerror=e=>{console.warn('Speech error:',e.error);if(speakBtn){speakBtn.textContent='🔊 SPEAK';speakBtn.dataset.speaking='false';}};speechSynthesis.speak(utt);setTimeout(()=>{if(speechSynthesis.paused)speechSynthesis.resume();},150);}
+const textInput=document.getElementById('text-input'); const speakBtn=document.getElementById('speak-btn');
+textInput.addEventListener('input',function(){const text=this.value;if(!text||!text.trim()){document.getElementById('lang-name').textContent='Waiting for input...';document.getElementById('lang-code').textContent='';document.getElementById('confidence-pct').textContent='';document.getElementById('method-tag').textContent='';document.getElementById('confidence-dot').className='dot';speakBtn.disabled=true;return;} const result=detectLanguage(text);document.getElementById('lang-name').textContent=result.languageName;document.getElementById('lang-code').textContent=result.languageCode;document.getElementById('confidence-pct').textContent=result.confidence+'%';document.getElementById('method-tag').textContent=result.method;const dot=document.getElementById('confidence-dot');dot.className=result.confidence>=90?'dot high':result.confidence>=70?'dot medium':'dot low';populateVoiceSelector(result.languageCode);speakBtn.disabled=false;});
+document.getElementById('speed-slider').addEventListener('input',function(){speakRate=parseFloat(this.value);document.getElementById('speed-label').textContent=speakRate.toFixed(1)+'×';});
+speakBtn.addEventListener('click',function(){const text=textInput.value;if(this.dataset.speaking==='true'){speechSynthesis.cancel();this.textContent='🔊 SPEAK';this.dataset.speaking='false';return;}if(!text||!text.trim())return;const result=detectLanguage(text);speakText(text,result.languageCode);});
+</script>
+</body>
+</html>

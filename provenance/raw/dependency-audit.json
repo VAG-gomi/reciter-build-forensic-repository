@@ -1,0 +1,31 @@
+{
+  "dependencies": [
+    {
+      "dependency": "https://fonts.googleapis.com",
+      "local_external": "external",
+      "source": "HTML external URL",
+      "status": "REFERENCE_ONLY",
+      "used_by": "index.html",
+      "version": "UNKNOWN"
+    },
+    {
+      "dependency": "https://fonts.gstatic.com",
+      "local_external": "external",
+      "source": "HTML external URL",
+      "status": "REFERENCE_ONLY",
+      "used_by": "index.html",
+      "version": "UNKNOWN"
+    },
+    {
+      "dependency": "https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap",
+      "local_external": "external",
+      "source": "HTML external URL",
+      "status": "REFERENCE_ONLY",
+      "used_by": "index.html",
+      "version": "UNKNOWN"
+    }
+  ],
+  "metadata_files": [],
+  "note": "No package manifest was present in the inspected project; textual URLs are not local dependencies.",
+  "project": "/home/ubuntu/universal-language-reciter"
+}

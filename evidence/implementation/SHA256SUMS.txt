@@ -1,0 +1,2 @@
+795c4406efd0931847af4b6620c9576c54184389bf01e8419b897098fbc42e27  /home/ubuntu/universal-language-reciter/index.html
+58eef85c4ae3e5b0501e9934f0c29be81925590ef69344b60effe218ab9136f5  /home/ubuntu/universal-language-reciter.zip
