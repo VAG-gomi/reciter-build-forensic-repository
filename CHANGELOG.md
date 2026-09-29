@@ -12,7 +12,16 @@
 ## Current forensic setup
 
 - Version: `forensic-initial`
-- Date: `$(date -u +%Y-%m-%d)`
+- Date: `2026-09-29`
 - Changed: Added source/archive/evidence directories and separate provenance tools.
 - Reason explicitly given by developer: Preserve technical history and make provenance questions testable.
 - Production source changed: No.
+
+## Phase 1–3 corrective record
+
+- Version: `forensic-phase-records`
+- Date: `2026-09-29`
+- Changed: Preserved the exact Phase 1–3 specification, added phase-by-phase technical records, added the missing forensic-tool validation record, and expanded runtime evidence to include the required reproducibility fields.
+- Reason explicitly given by developer: Audit whether the GitHub repository contained the Phase 1–3 instructions, answers, and build records.
+- Files affected: `specification/`, `phases/`, `evidence/tests/TEST-FORENSIC-001.md`, `evidence/runtime/TEST-RUNTIME-001.md`, `README.md`.
+- Observed runtime difference: No production Reciter source or runtime behavior was changed.
