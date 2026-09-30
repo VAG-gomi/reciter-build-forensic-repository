@@ -1,0 +1,186 @@
+{
+  "artifacts": [
+    {
+      "mtime": 1790454799.047014,
+      "path": "/home/ubuntu/universal-language-reciter/index.html",
+      "relationship": "Reciter or forensic repository artifact",
+      "size": 15231,
+      "type": "SOURCE"
+    },
+    {
+      "mtime": 1790702155.4851265,
+      "path": "/home/ubuntu/reciter-build-forensic/README.md",
+      "relationship": "Reciter or forensic repository artifact",
+      "size": 838,
+      "type": "DOCUMENTATION"
+    },
+    {
+      "mtime": 1790702155.4865496,
+      "path": "/home/ubuntu/reciter-build-forensic/CHANGELOG.md",
+      "relationship": "Reciter or forensic repository artifact",
+      "size": 818,
+      "type": "DOCUMENTATION"
+    },
+    {
+      "mtime": 1790454799.047014,
+      "path": "/home/ubuntu/reciter-build-forensic/source/index.html",
+      "relationship": "Reciter or forensic repository artifact",
+      "size": 15231,
+      "type": "SOURCE"
+    },
+    {
+      "mtime": 1790455503.1518013,
+      "path": "/home/ubuntu/reciter-build-forensic/archive/reciter-baseline-v1.zip",
+      "relationship": "Reciter or forensic repository artifact",
+      "size": 5229,
+      "type": "ARCHIVE"
+    },
+    {
+      "mtime": 1790702196.6944847,
+      "path": "/home/ubuntu/reciter-build-forensic/provenance/provenance-map.json",
+      "relationship": "Reciter or forensic repository artifact",
+      "size": 1295,
+      "type": "CONFIGURATION"
+    },
+    {
+      "mtime": 1790454799.0,
+      "path": "/home/ubuntu/reciter-build-forensic/archive/reciter-baseline/index.html",
+      "relationship": "Reciter or forensic repository artifact",
+      "size": 15231,
+      "type": "SOURCE"
+    },
+    {
+      "mtime": 1790702214.9191647,
+      "path": "/home/ubuntu/reciter-build-forensic/evidence/runtime/TEST-RUNTIME-001.md",
+      "relationship": "Reciter or forensic repository artifact",
+      "size": 1568,
+      "type": "DOCUMENTATION"
+    },
+    {
+      "mtime": 1790702182.6980612,
+      "path": "/home/ubuntu/reciter-build-forensic/evidence/failures/runtime-trace-first-run-failed.json",
+      "relationship": "Reciter or forensic repository artifact",
+      "size": 919,
+      "type": "CONFIGURATION"
+    },
+    {
+      "mtime": 1790702196.6928837,
+      "path": "/home/ubuntu/reciter-build-forensic/evidence/failures/component-trace-first-run-false-positive.json",
+      "relationship": "Reciter or forensic repository artifact",
+      "size": 1464,
+      "type": "CONFIGURATION"
+    },
+    {
+      "mtime": 1790702155.4726028,
+      "path": "/home/ubuntu/reciter-build-forensic/evidence/implementation/SHA256SUMS.txt",
+      "relationship": "Reciter or forensic repository artifact",
+      "size": 227,
+      "type": "DOCUMENTATION"
+    },
+    {
+      "mtime": 1790702155.4789915,
+      "path": "/home/ubuntu/reciter-build-forensic/evidence/implementation/ENVIRONMENT.txt",
+      "relationship": "Reciter or forensic repository artifact",
+      "size": 273,
+      "type": "DOCUMENTATION"
+    },
+    {
+      "mtime": 1790702214.9192293,
+      "path": "/home/ubuntu/reciter-build-forensic/evidence/implementation/IMPLEMENTATION-001.md",
+      "relationship": "Reciter or forensic repository artifact",
+      "size": 695,
+      "type": "DOCUMENTATION"
+    },
+    {
+      "mtime": 1790702251.0045493,
+      "path": "/home/ubuntu/reciter-build-forensic/tools/provenance/forensic.py",
+      "relationship": "Reciter or forensic repository artifact",
+      "size": 11905,
+      "type": "SCRIPT"
+    },
+    {
+      "mtime": 1790702251.0447857,
+      "path": "/home/ubuntu/reciter-build-forensic/tools/provenance/__pycache__/forensic.cpython-312.pyc",
+      "relationship": "Reciter or forensic repository artifact",
+      "size": 19223,
+      "type": "UNKNOWN"
+    },
+    {
+      "mtime": 1790702196.6928837,
+      "path": "/home/ubuntu/reciter-build-forensic/provenance/raw/component-trace.json",
+      "relationship": "Reciter or forensic repository artifact",
+      "size": 1464,
+      "type": "CONFIGURATION"
+    },
+    {
+      "mtime": 1790702196.693108,
+      "path": "/home/ubuntu/reciter-build-forensic/provenance/raw/source-provenance.json",
+      "relationship": "Reciter or forensic repository artifact",
+      "size": 1123,
+      "type": "CONFIGURATION"
+    },
+    {
+      "mtime": 1790702196.6932497,
+      "path": "/home/ubuntu/reciter-build-forensic/provenance/raw/dependency-audit.json",
+      "relationship": "Reciter or forensic repository artifact",
+      "size": 960,
+      "type": "CONFIGURATION"
+    },
+    {
+      "mtime": 1790702196.6933508,
+      "path": "/home/ubuntu/reciter-build-forensic/provenance/raw/internal-tools.json",
+      "relationship": "Reciter or forensic repository artifact",
+      "size": 145,
+      "type": "CONFIGURATION"
+    },
+    {
+      "mtime": 1790702196.6936426,
+      "path": "/home/ubuntu/reciter-build-forensic/provenance/raw/sandbox-inventory.json",
+      "relationship": "Reciter or forensic repository artifact",
+      "size": 5202,
+      "type": "CONFIGURATION"
+    },
+    {
+      "mtime": 1790702196.6937668,
+      "path": "/home/ubuntu/reciter-build-forensic/provenance/raw/baseline-diff.json",
+      "relationship": "Reciter or forensic repository artifact",
+      "size": 264,
+      "type": "CONFIGURATION"
+    },
+    {
+      "mtime": 1790702196.6939993,
+      "path": "/home/ubuntu/reciter-build-forensic/provenance/raw/runtime-trace.json",
+      "relationship": "Reciter or forensic repository artifact",
+      "size": 2120,
+      "type": "CONFIGURATION"
+    },
+    {
+      "mtime": 1790702196.694118,
+      "path": "/home/ubuntu/reciter-build-forensic/provenance/raw/build-trace.json",
+      "relationship": "Reciter or forensic repository artifact",
+      "size": 354,
+      "type": "CONFIGURATION"
+    },
+    {
+      "mtime": 1790702196.694296,
+      "path": "/home/ubuntu/reciter-build-forensic/provenance/raw/named-components.json",
+      "relationship": "Reciter or forensic repository artifact",
+      "size": 2406,
+      "type": "CONFIGURATION"
+    },
+    {
+      "mtime": 1790702196.6944847,
+      "path": "/home/ubuntu/reciter-build-forensic/provenance/raw/provenance-map.json",
+      "relationship": "Reciter or forensic repository artifact",
+      "size": 1295,
+      "type": "CONFIGURATION"
+    },
+    {
+      "mtime": 1790702214.919562,
+      "path": "/home/ubuntu/reciter-build-forensic/provenance/reports/provenance-report.md",
+      "relationship": "Reciter or forensic repository artifact",
+      "size": 2363,
+      "type": "DOCUMENTATION"
+    }
+  ]
+}

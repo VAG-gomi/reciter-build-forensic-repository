@@ -25,3 +25,12 @@
 - Reason explicitly given by developer: Audit whether the GitHub repository contained the Phase 1–3 instructions, answers, and build records.
 - Files affected: `specification/`, `phases/`, `evidence/tests/TEST-FORENSIC-001.md`, `evidence/runtime/TEST-RUNTIME-001.md`, `README.md`.
 - Observed runtime difference: No production Reciter source or runtime behavior was changed.
+
+## Final technical verification and freeze
+
+- Version: `technical-freeze-2026-09-30`
+- Date: `2026-09-30`
+- Changed: Added the final technical audit report and exact freeze specification, preserved the first final-audit helper failure, preserved the pre-audit sandbox inventory, regenerated the current sandbox inventory, and removed an untracked Python cache.
+- Reason explicitly given by developer: Verify, correct where technically necessary, document, and finalise the repository's technical sources, scripts, evidence, provenance records, and reproducibility state.
+- Files affected: `reports/FINAL-TECHNICAL-AUDIT-2026-09-30.md`, `specification/FINAL-TECHNICAL-REPOSITORY-VERIFICATION-AND-FREEZE.md`, `evidence/failures/final-audit-source-extraction-first-run-failed.txt`, `evidence/failures/sandbox-inventory-before-final-audit.json`, `provenance/raw/sandbox-inventory.json`, `README.md`.
+- Observed runtime difference: No production Reciter source, baseline archive, or historical commit was modified.

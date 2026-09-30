@@ -11,6 +11,8 @@ This repository is a technical record of the Universal Language Reciter build. I
 - `history/RECITER-BUILD-HISTORY-INTERROGATION.md` records the build and source history account.
 - `history/MANUS-REPOSITORY-CREATION-FORENSIC-INTERROGATION.md` records how this Git/GitHub repository was created.
 - `specification/MANUS-REPOSITORY-CREATION-FORENSIC-INTERROGATION.md` preserves that interrogation specification.
+- `reports/FINAL-TECHNICAL-AUDIT-2026-09-30.md` records the final technical verification and freeze status.
+- `specification/FINAL-TECHNICAL-REPOSITORY-VERIFICATION-AND-FREEZE.md` preserves the exact final-freeze specification.
 
 ## Evidence boundary
 

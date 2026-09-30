@@ -1,0 +1,15 @@
+# Final audit harness first-run failure
+
+Date: 2026-09-30
+
+Operation: Extract the JavaScript `<script>` body from `source/index.html` before running `node --check`.
+
+Observed error:
+
+```text
+AttributeError: 'NoneType' object has no attribute 'group'
+```
+
+Cause: The audit helper used an incorrectly escaped regular-expression pattern in its own temporary extraction command. This was a failure of the audit helper, not of the preserved Reciter source.
+
+Correction: The audit was rerun with a corrected extraction pattern. The preserved source was not modified.
