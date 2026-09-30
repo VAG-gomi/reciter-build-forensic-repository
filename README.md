@@ -8,6 +8,9 @@ This repository is a technical record of the Universal Language Reciter build. I
 - `phases/PHASE-1-BUILD-FORENSIC-RECORD.md` records the Phase 1 build/source/runtime work.
 - `phases/PHASE-2-BUILD-PROVENANCE-RECORD.md` records the Phase 2 provenance investigation.
 - `phases/PHASE-3-FORENSIC-TOOLSET-RECORD.md` records the Phase 3 toolset and outputs.
+- `history/RECITER-BUILD-HISTORY-INTERROGATION.md` records the build and source history account.
+- `history/MANUS-REPOSITORY-CREATION-FORENSIC-INTERROGATION.md` records how this Git/GitHub repository was created.
+- `specification/MANUS-REPOSITORY-CREATION-FORENSIC-INTERROGATION.md` preserves that interrogation specification.
 
 ## Evidence boundary
 
