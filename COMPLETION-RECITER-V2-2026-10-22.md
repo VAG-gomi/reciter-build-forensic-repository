@@ -203,3 +203,23 @@ Run against the public mirror of `docs/index.html`.
 Once the voiced-device test passes, the TTS-first
 sequence is complete and the AI approach (J1/J2/J3)
 can be ruled on.
+
+## CORRECTION (2026-10-22, owner ruling)
+
+The publication step above was PREMATURE and has been
+undone. The owner clarified: the application stage was
+never requested at this point. The correct sequence is:
+complete the repository's other tasks, add more logic,
+test — and only then turn it into an application.
+
+- GitHub Pages DISABLED 2026-10-22 (API returns
+  Not Found; live site returns 404). The repo itself
+  remains public, as separately approved by the owner.
+- `docs/index.html` (v2) and this record remain in
+  the repo as DRAFT work material, not as an
+  application. Their fate (keep, revise, or remove)
+  is for the owner to rule when the task list is set.
+- The "TTS-first sequence complete" claim in the
+  earlier section is WITHDRAWN: v2 was verified only
+  in a voiceless browser, and the voiced-device test
+  plus the remaining logic work are still outstanding.
