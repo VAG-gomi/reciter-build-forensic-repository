@@ -144,3 +144,62 @@ TTS completion first; only then the joint AI steps
 (J1 recitation-schedule world, J2 reciter features as
 observations, J3 listener world) from
 `CONNECTION-MAP-reciter-TBM.md`. None authorized yet.
+
+## v2 browser verification (completed 2026-10-22, read-only)
+
+Run against the public mirror of `docs/index.html`.
+
+- Status line: CONFIRMED present. Initial warning
+  "No voices found on this device — speech may be
+  unavailable." Every SPEAK attempt then showed
+  "Speech error: synthesis-failed" visibly. The app
+  no longer fails silently — this was the core fix
+  and it is verified.
+- Device-default option: CONFIRMED present from the
+  start. Voice enumeration: 1 option only (Device
+  default); no Bengali, no Arabic voice in this
+  browser environment.
+- Language-specific no-matching-voice warning: NOT
+  TRIGGERED, correctly — with zero voices present,
+  the generic "No voices found" warning is the right
+  message; the language-specific branch only fires
+  when voices exist but none match. That branch still
+  needs a voices-present-but-no-match environment.
+- SPEAK behavior: button never stuck on STOP;
+  every attempt errored immediately (synthesis-failed).
+  Watchdog: NOT TRIGGERED, correctly — no utterance
+  hung without starting or erroring, so there was
+  nothing for the watchdog to catch. The watchdog path
+  itself remains unverified (needs a hanging engine).
+- Chunk queue: NOT VERIFIABLE here — speech never
+  started, so no chunk could play.
+- Detection unchanged from v1: Bengali bn-BD 100%
+  unicode-rule; English fallback 35%; Spanish
+  misdetected as English fallback 35% (known
+  short-Latin-text limitation, out of scope).
+- Bounds (unchanged): pronunciation unverified;
+  console log unavailable through browser tooling;
+  voiced-device test still needed.
+
+## Publication (2026-10-22)
+
+- GitHub Pages enabled: source main branch, /docs
+  folder, HTTPS enforced, site public.
+- Live URL: https://vag-gomi.github.io/reciter-build-forensic-repository/
+- Verified after build: pages status `built`,
+  live URL HTTP 200, served content contains v2
+  markers (speech-status, Device default,
+  bigram-cosine).
+- Frozen baseline untouched throughout
+  (source/index.html SHA-256 unchanged).
+
+## Still needs a voiced device (user's ear)
+
+- Pronunciation correctness per language.
+- Chunk-queue behavior on long text with real speech.
+- Watchdog behavior on a hanging engine.
+- Language-specific warning (voices present, no
+  Bengali voice).
+Once the voiced-device test passes, the TTS-first
+sequence is complete and the AI approach (J1/J2/J3)
+can be ruled on.
