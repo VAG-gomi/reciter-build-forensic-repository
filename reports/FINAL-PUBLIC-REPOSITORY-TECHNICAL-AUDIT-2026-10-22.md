@@ -191,7 +191,9 @@ No source, archive, baseline, v2 application file, prior failure record, or prio
 
 ## 9. Final repository state
 
-Final audit commit hash: recorded after the traceable audit commit is created and pushed; the final delivery records the exact resulting hash.
+Final audit documentation commit hash: `95eb09467895debce69943c25666fd58dd1fcfd6`.
+
+This report-hash correction is itself a new documentation-only commit; no application source or prior evidence is changed.
 
 Branch: `main`
 
