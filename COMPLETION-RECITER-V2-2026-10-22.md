@@ -1,5 +1,7 @@
 # Reciter completion — v2 draft record (2026-10-22)
 
+> **Current-state clarification added 2026-10-22:** The opening status below describes the pre-commit draft state. In the current public repository, this record is tracked and `docs/index.html` was added by commit `4095ee89a0af00f6f13b80fc87f2857afeece88d`. No `workspace/reciter-v2/` path exists in the current tree. The later publication attempt was recorded in commit `92d161237419c1fa1ba42d3a9d88a9cae56cee9e` and then corrected/disabled in commit `fa3f5d33e1c58196805f77d38d8b12e22a2f8976`; current GitHub Pages API and the documented live URL return 404. The original baseline under `source/` remains separate and unchanged.
+
 **Status: DRAFT — not published, not pushed.** This record
 and the v2 file were prepared while the repository-visibility
 decision (make `VAG-gomi/reciter-build-forensic-repository`

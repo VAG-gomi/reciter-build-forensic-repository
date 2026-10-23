@@ -13,6 +13,8 @@ This repository is a technical record of the Universal Language Reciter build. I
 - `specification/MANUS-REPOSITORY-CREATION-FORENSIC-INTERROGATION.md` preserves that interrogation specification.
 - `reports/FINAL-TECHNICAL-AUDIT-2026-09-30.md` records the final technical verification and freeze status.
 - `specification/FINAL-TECHNICAL-REPOSITORY-VERIFICATION-AND-FREEZE.md` preserves the exact final-freeze specification.
+- `reports/FINAL-PUBLIC-REPOSITORY-TECHNICAL-AUDIT-2026-10-22.md` records the current public-state audit and baseline/v2 clarification.
+- `specification/FINAL-PUBLIC-REPOSITORY-TECHNICAL-AUDIT-2026-10-22.md` preserves the exact public-repository audit specification.
 
 ## Evidence boundary
 
