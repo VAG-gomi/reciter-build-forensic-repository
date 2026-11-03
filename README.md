@@ -28,6 +28,22 @@ This repository is a technical record of the Universal Language Reciter build. I
 - `provenance/raw/` contains machine-readable tool output.
 - `provenance/reports/` contains summaries of those outputs.
 
-The repository does not contain `lesson-*.md` or examination-conclusion files because the Phase 1 specification assigns those to the separate investigation layer. This repository supplies the technical evidence those lessons can cite.
+The repository's Phase 1 specification assigns lesson conclusions to the separate investigation layer. The documentation branch proposed for this recovery carries a clearly labelled reference copy for discovery; it does not convert lesson prose into technical evidence or alter the frozen implementation record.
+
+## Investigation lesson reference copy
+
+The consolidated Universal Language Reciter lessons 1–8 are organised under [`investigation-lessons/`](investigation-lessons/README.md). These documents are an editorial learning record, not verbatim transcripts and not a substitute for source/runtime evidence.
+
+- [Lesson index and editorial provenance](investigation-lessons/README.md)
+- [Lesson 1 — Input → Interpretation → Output](investigation-lessons/lesson-01.md)
+- [Lesson 2 — Keyboard → IME → Input System](investigation-lessons/lesson-02.md)
+- [Lesson 3 — Script ≠ Language](investigation-lessons/lesson-03.md)
+- [Lesson 4 — Tokenisation](investigation-lessons/lesson-04.md)
+- [Lesson 5 — Tokens → Measurement](investigation-lessons/lesson-05.md)
+- [Lesson 6 — Measurement → Ranking → Decision](investigation-lessons/lesson-06.md)
+- [Lesson 7 — Evidence Quality & Representation Adequacy](investigation-lessons/lesson-07.md)
+- [Lesson 8 — Evidence Units & Multi-Resolution Representation](investigation-lessons/lesson-08.md)
+
+**Preservation boundary:** Lesson 7's fixture-encoding and score discrepancy remains `UNKNOWN / UNRECONCILED`. Lesson 8 Investigation 3 remains proposed and open. No lesson authorises a source redesign or implementation change.
 
 Unknown provenance is retained as `UNKNOWN`; a textual component name is not treated as execution evidence.
